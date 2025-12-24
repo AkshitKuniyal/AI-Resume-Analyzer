@@ -1,0 +1,41 @@
+export const meta = () =>([
+    {title:"Resumind - Auth"},
+    {name:"description",content:"Log into your account"}
+])
+import { usePuterStore } from "../lib/puter";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router";
+const Auth = () => {
+const {isLoading, auth}=usePuterStore();
+const location = useLocation();
+const next = location.search.split("next=")[1];
+const navigate = useNavigate();
+useEffect(()=>{
+   if(auth.isAuthenticated) navigate("/"); 
+},[auth.isAuthenticated])
+  return (
+    <main className="bg-[url('/images/bg-auth.svg')] bg-cover min-h-screen flex items-center justify-center">
+        <div className="gradient-border shadow-lg">
+            <section className=" gap-8 bg-white rounded-2xl p-10">
+                <div className="flex  flex-col items-center gap-2 text-center mb-5">
+                    <h1>Welcome</h1>
+                    <h2>Log in to continue your job journey.</h2>
+                </div>
+                <div>
+                    {isLoading?(<button className="auth-button animate-pulse"><p>Signing in...</p></button>):(<>{auth.isAuthenticated?(
+                        <button className="auth-button" onClick={auth.signOut}>
+                       Log Out
+                        </button>
+                    ):(
+                        <button className="auth-button" onClick={auth.signIn}>
+                        Log In
+                        </button>
+                    )}</>)} 
+                </div>
+            </section>
+        </div>
+    </main>
+  )
+}
+
+export default Auth
