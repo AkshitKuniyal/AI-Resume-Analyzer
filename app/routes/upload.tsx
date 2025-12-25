@@ -105,7 +105,7 @@ const upload = () => {
             console.log(data);
             
             setIsProcessing(false);
-            setTimeout(() => navigate('/'), 2000);
+            navigate(`/resume/${uuid}`);
             
         } catch (error) {
             console.error("Error during analysis:", error);
