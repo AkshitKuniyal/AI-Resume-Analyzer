@@ -12,6 +12,7 @@
     "@heyputer/puter.js": "^2.2.2",
     "@react-router/node": "7.10.1",
     "@react-router/serve": "7.10.1",
+    "aceternity-ui": "^0.2.2",
     "clsx": "^2.1.1",
     "isbot": "^5.1.31",
     "pdfjs-dist": "^5.4.449",
